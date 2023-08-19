@@ -1,0 +1,41 @@
+.headerComponent {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 4rem;
+  background-color: $color_Blue;
+  display: flex;
+  align-items: center;
+
+  .headerSearch {
+    margin-inline: 5vw;
+    width: calc(100% - 20vw);
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    border-radius: 4px;
+    @include mquery(desk) {
+      width: 600px;
+      margin-inline: auto;
+    }
+    img {
+      width: 20px;
+      height: 20px;
+      padding: 8px;
+    }
+    input {
+      background-color: white;
+      border: 0px;
+      outline: none;
+      color: black;
+    }
+  }
+  .homeHeader {
+    position: absolute;
+    right: 4vw;
+    img {
+      width: 20px;
+      padding: 8px;
+    }
+  }
+}

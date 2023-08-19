@@ -1,4 +1,4 @@
-@mixin resQuery($breakpoint) {
+@mixin mquery($breakpoint) {
   @if $breakpoint == mob {
     @media screen and (max-width: 767px) {
       @content;

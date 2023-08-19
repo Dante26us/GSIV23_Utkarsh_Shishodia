@@ -1,10 +1,13 @@
+@import "./style/index.scss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&family=Open+Sans:wght@300;400;700&display=swap');
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  // color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
