@@ -1,4 +1,8 @@
 import React from "react";
+import { colorHandle } from "../../pages/MovieDetail";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
 export default function Card({
   id,
@@ -6,18 +10,20 @@ export default function Card({
   original_title,
   release_date,
   overview,
-  popularity,
+  vote_average,
+  selectMovie,
 }) {
-  console.log(`https://image.tmdb.org/t/p/original${poster_path}`);
   return (
-    <div className="card">
+    <div className="card" onClick={() => selectMovie(id)}>
       <img
-        src={`https://image.tmdb.org/t/p/original${poster_path}`}
+        src={`${import.meta.env.VITE_MOVIE_DB_BASE_URL}${poster_path}`}
         alt="card_image"
       />
       <div className="title">
         <span className="movie_title">{original_title}</span>
-        <span>{popularity}</span>
+        <span style={{ backgroundColor: colorHandle(vote_average) }}>
+          {vote_average}
+        </span>
       </div>
       <div className="hide">
         <div className="overview">

@@ -1,13 +1,14 @@
 .card {
   margin: 1em;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: rgba(50, 50, 93, 0.75) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.8) 0px 8px 16px -8px;
   cursor: pointer;
   width: 270px;
   height: 400px;
   background-color: whitesmoke;
   transition: all 0.2s ease-in;
   &:hover {
+    box-sizing: border-box;
     transform: scale(1.1);
     .hide {
       display: flex;
@@ -38,8 +39,8 @@
     object-fit: cover;
     width: 270px;
     height: 360px;
-    @include mquery(mob){
-        height: 360px;
+    @include mquery(mob) {
+      height: 360px;
     }
   }
   .title {
@@ -47,10 +48,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    .movie_title{
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    .movie_title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     span {
       &:nth-of-type(1) {
@@ -59,7 +60,8 @@
       &:nth-of-type(2) {
         font-weight: 300;
         font-size: 10px;
-        background-color: $color_Blue;
+        width: 16px;
+        text-align: center;
         color: white;
         padding: 1px 2px;
         border-radius: 2px;
@@ -69,5 +71,44 @@
   .hide {
     display: none;
     background-color: whitesmoke;
+  }
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  //   text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+.swiper-slide img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px 6px 0px 0px;
+}
+.sliderContainer {
+  .castDetails {
+    padding: 10px;
+    div {
+      &:nth-of-type(1) {
+        font-weight: 700;
+      }
+
+      &:nth-of-type(2) {
+        font-weight: 300;
+        font-size: 16px;
+      }
+
+      &:nth-of-type(3) {
+        font-weight: 500;
+      }
+    }
   }
 }

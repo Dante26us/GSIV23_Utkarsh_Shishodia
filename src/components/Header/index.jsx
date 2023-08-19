@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import searchSvg from "../../assets/search-svgrepo-com.svg";
 import homeSvg from "../../assets/home-1391-svgrepo-com.svg";
+import { useDispatch } from "react-redux";
+import { clearMovieDetails } from "../../reducers/moviesSlice";
 export default function Header() {
+  const nav = useNavigate();
+  const dispatch = useDispatch();
   const [key, setKey] = useState("");
   const handleChange = (e) => {
     setKey(e.target.value);
@@ -24,7 +28,13 @@ export default function Header() {
             value={key}
           />
         </div>
-        <div className="homeHeader">
+        <div
+          className="homeHeader"
+          onClick={() => {
+            dispatch(clearMovieDetails());
+            nav("/");
+          }}
+        >
           <img src={homeSvg} alt="home icon" />
         </div>
       </div>

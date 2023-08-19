@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovies } from "../../actions/movieActions";
 import Card from "../../components/Card";
@@ -11,6 +11,7 @@ export default function Home() {
   const movieData = useSelector((state) => state.movies);
   const dispatch = useDispatch();
   const ref = useRef(null);
+  const nav=useNavigate();
 
   useEffect(() => {
     if (movieData) {
@@ -33,6 +34,10 @@ export default function Home() {
     observer.observe(ref.current);
   }, []);
 
+  const selectMovieHandler = (idx) => {
+    nav(`/${idx}`)
+  };
+
   return (
     <>
       <Outlet />
@@ -46,7 +51,8 @@ export default function Home() {
                 original_title={i.original_title}
                 release_date={i.release_date}
                 overview={i.overview}
-                popularity={i.popularity}
+                vote_average={i.vote_average}
+                selectMovie={selectMovieHandler}
               />
             ))
           ) : (
