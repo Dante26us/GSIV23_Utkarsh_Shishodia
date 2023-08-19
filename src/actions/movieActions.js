@@ -1,3 +1,5 @@
+import { getAllMovies } from "../reducers/moviesSlice";
+
 export const getMovies = (pageNumber) => async (dispatch) => {
   const options = {
     method: "GET",
@@ -14,6 +16,7 @@ export const getMovies = (pageNumber) => async (dispatch) => {
     );
     const response = await data.json();
     console.log(response);
+    dispatch(getAllMovies(response.results));
   } catch (err) {
     console.error(err);
   }
