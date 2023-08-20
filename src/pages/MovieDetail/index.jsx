@@ -5,7 +5,7 @@ import { getMovieDetail } from "../../actions/movieActions";
 import { getCastDetails } from "../../actions/castAction";
 import CastDetails from "./CastDetails";
 import { clearMovieDetails } from "../../reducers/moviesSlice";
-
+import stockPlaceholder from "../../assets/placeholder.png";
 export const colorHandle = (rating) => {
   if (rating > 7) return "#34a853";
   else if (rating > 5) return "#fbbc04";
@@ -18,6 +18,7 @@ export default function MovieDetail() {
   const [details, setDetails] = useState({});
   const movieData = useSelector((state) => state.movies);
   const castData = useSelector((state) => state.cast);
+  const [imagePath, setImagePath] = useState(null);
   // console.log(movieData.movieDetails, castData);
   useEffect(() => {
     if (params.id) {
@@ -37,6 +38,13 @@ export default function MovieDetail() {
     return `${hh}:${mm}`;
   };
 
+  useEffect(() => {
+    if (details.poster_path) {
+      setImagePath(
+        import.meta.env.VITE_MOVIE_DB_BASE_URL + details.poster_path
+      );
+    }
+  }, [details.poster_path]);
   return (
     <>
       {details?.id ? (
@@ -52,12 +60,16 @@ export default function MovieDetail() {
             ></div>
             <div className="DetailPage">
               <div className="leftPage">
-                <img
-                  src={`${import.meta.env.VITE_MOVIE_DB_BASE_URL}${
-                    details.poster_path
-                  }`}
-                  alt="detail_Image"
-                />
+                {imagePath ? (
+                  <img
+                    src={`${import.meta.env.VITE_MOVIE_DB_BASE_URL}${
+                      details.poster_path
+                    }`}
+                    alt="detail_Image"
+                  />
+                ) : (
+                  <img className="" src={stockPlaceholder} alt="card_image" />
+                )}
               </div>
               <div className="rightPage">
                 <div className="title">
@@ -72,7 +84,7 @@ export default function MovieDetail() {
                 </div>
                 <div>
                   <span>{details.release_date.slice(0, 4)}</span> |
-                  <span>{hourConvert(details.runtime)}</span> |
+                  <span>{hourConvert(details.runtime)}</span>
                 </div>
                 <div className="detail_overview">
                   <h3>Overview</h3>

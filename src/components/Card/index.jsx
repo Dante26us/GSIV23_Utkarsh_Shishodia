@@ -20,7 +20,7 @@ export default function Card({
       setImagePath(import.meta.env.VITE_MOVIE_DB_BASE_URL + poster_path);
     }
   }, [poster_path]);
-  // console.log(imagePath);
+  
   return (
     <div className="card" onClick={() => selectMovie(id)}>     
       {imagePath ? (
