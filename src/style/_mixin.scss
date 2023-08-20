@@ -1,0 +1,19 @@
+@mixin mquery($breakpoint) {
+  @if $breakpoint == mob {
+    @media screen and (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == tab {
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == desk {
+    @media screen and (min-width: 1024px) and (max-width: 2559px){
+      @content;
+    }
+  } @else if $breakpoint == bigDesk {
+    @media screen and (min-width: 2560px) {
+      @content;
+    }
+  }
+}

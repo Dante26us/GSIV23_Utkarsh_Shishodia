@@ -1,0 +1,10 @@
+@import "./variable";
+@import "./mixin";
+
+// component
+@import "./components/header";
+@import "./components/card";
+
+//pages
+@import "./pages/home";
+@import "./pages/detail";

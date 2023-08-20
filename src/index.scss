@@ -1,0 +1,40 @@
+@import "./style/index.scss";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&family=Open+Sans:wght@300;400;700&display=swap");
+#root {
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  width: 100vw;
+  color-scheme: light dark;
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.Page {
+  margin-top: 4rem;
+  width: calc(100% - 2rem);
+  height: calc( 100vh - 6rem);
+  padding: 1rem 2rem;
+  margin-inline: auto;
+  overflow-x: hidden;
+  @include mquery(mob){
+    padding: 1rem 1rem;
+  }
+}
