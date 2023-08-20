@@ -1,6 +1,10 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CastCards from "../../components/Card/CastCards";
+import { checkScreen } from "../../components/utils";
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
 
 export default function CastDetails({ castDetails }) {
   console.log(castDetails);
@@ -9,9 +13,11 @@ export default function CastDetails({ castDetails }) {
       <h2 className="castHeading">Cast Members</h2>
       <Swiper
         spaceBetween={10}
-        slidesPerView={6}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        slidesPerView={
+          checkScreen() == "mob" ? 2 : checkScreen() == "tab" ? 3.2 : 8
+        }
+        // onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
       >
         {castDetails?.map((i) => (
           <SwiperSlide>

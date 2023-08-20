@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { colorHandle } from "../../pages/MovieDetail";
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import stockPlaceholder from "../../assets/placeholder.png";
 
 export default function Card({
   id,
@@ -13,12 +14,22 @@ export default function Card({
   vote_average,
   selectMovie,
 }) {
+  const [imagePath, setImagePath] = useState(null);
+  useEffect(() => {
+    if (poster_path) {
+      setImagePath(import.meta.env.VITE_MOVIE_DB_BASE_URL + poster_path);
+    }
+  }, [poster_path]);
+  // console.log(imagePath);
   return (
-    <div className="card" onClick={() => selectMovie(id)}>
-      <img
-        src={`${import.meta.env.VITE_MOVIE_DB_BASE_URL}${poster_path}`}
-        alt="card_image"
-      />
+    <div className="card" onClick={() => selectMovie(id)}>     
+      {imagePath ? (
+        <img src={`${imagePath}`} alt="card_image" />
+      ) : (
+        <>
+          <img className="" src={stockPlaceholder} alt="card_image" />
+        </>
+      )}
       <div className="title">
         <span className="movie_title">{original_title}</span>
         <span style={{ backgroundColor: colorHandle(vote_average) }}>
@@ -29,9 +40,6 @@ export default function Card({
         <div className="overview">
           <span className="content">{overview}</span>
         </div>
-        {/* <div className="">
-          <span>{release_date}</span>
-        </div> */}
       </div>
     </div>
   );

@@ -6,16 +6,18 @@ import Card from "../../components/Card";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
+  const [searchMovies, setSearchMovies] = useState([]);
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [page, setPage] = useState(0);
   const movieData = useSelector((state) => state.movies);
   const dispatch = useDispatch();
   const ref = useRef(null);
-  const nav=useNavigate();
+  const nav = useNavigate();
 
   useEffect(() => {
     if (movieData) {
-      setMovies([...movies, ...movieData?.movies]);
+      setMovies([...movieData?.movies]);
+      setSearchMovies([...movieData.searchMov]);
     }
   }, [movieData]);
 
@@ -35,29 +37,26 @@ export default function Home() {
   }, []);
 
   const selectMovieHandler = (idx) => {
-    nav(`/${idx}`)
+    nav(`/${idx}`);
   };
-
+  // console.log(movies,searchMovies)
   return (
     <>
       <Outlet />
       <div className="Page">
         <div className="movies">
-          {movies?.length > 0 ? (
-            movies.map((i) => (
-              <Card
-                id={i.id}
-                poster_path={i.poster_path}
-                original_title={i.original_title}
-                release_date={i.release_date}
-                overview={i.overview}
-                vote_average={i.vote_average}
-                selectMovie={selectMovieHandler}
-              />
-            ))
-          ) : (
-            <></>
-          )}
+          {(searchMovies?.length > 0 ? searchMovies : movies)?.map((i) => (
+            <Card
+              key={i.id}
+              id={i.id}
+              poster_path={i.poster_path}
+              original_title={i.original_title}
+              release_date={i.release_date}
+              overview={i.overview}
+              vote_average={i.vote_average}
+              selectMovie={selectMovieHandler}
+            />
+          ))}
         </div>
         <div ref={ref} id="footer" className="footer"></div>
       </div>

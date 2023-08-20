@@ -13,10 +13,16 @@ margin-bottom: 20px;
     margin-inline: auto;
     max-width: 1366px;
     height: 100%;
+    @include mquery(mob){
+        flex-direction: column;
+    }
     .leftPage {
       img {
         width: 320px;
         border-radius: 4px;
+        @include mquery(mob){
+            width: 120px;
+        }
       }
     }
     .rightPage {

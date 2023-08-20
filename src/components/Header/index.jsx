@@ -4,14 +4,20 @@ import searchSvg from "../../assets/search-svgrepo-com.svg";
 import homeSvg from "../../assets/home-1391-svgrepo-com.svg";
 import { useDispatch } from "react-redux";
 import { clearMovieDetails } from "../../reducers/moviesSlice";
+import { searchMovie } from "../../actions/searchmovie";
+
 export default function Header() {
   const nav = useNavigate();
   const dispatch = useDispatch();
   const [key, setKey] = useState("");
+
   const handleChange = (e) => {
-    setKey(e.target.value);
-    console.log(e.target.value);
+    const value = e.target.value;
+    setKey(value);
+    nav("/");
+    dispatch(searchMovie(value, 1));
   };
+
   return (
     <>
       <Outlet />

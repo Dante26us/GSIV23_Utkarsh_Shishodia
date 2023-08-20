@@ -18,7 +18,7 @@ export default function MovieDetail() {
   const [details, setDetails] = useState({});
   const movieData = useSelector((state) => state.movies);
   const castData = useSelector((state) => state.cast);
-  console.log(movieData.movieDetails, castData);
+  // console.log(movieData.movieDetails, castData);
   useEffect(() => {
     if (params.id) {
       dispatch(getMovieDetail(params.id));

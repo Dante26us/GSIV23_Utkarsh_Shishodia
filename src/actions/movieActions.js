@@ -15,7 +15,7 @@ export const getMovies = (pageNumber) => async (dispatch) => {
       options
     );
     const response = await data.json();
-    dispatch(getAllMovies(response.results));
+    dispatch(getAllMovies({ response: response.results, pageNumber }));
   } catch (err) {
     console.error(err);
   }

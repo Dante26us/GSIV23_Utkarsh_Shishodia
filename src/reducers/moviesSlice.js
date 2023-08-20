@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   movies: [],
   movieDetails: {},
+  searchMov: [],
+  pageNumbers: [],
 };
 
 export const movieSlice = createSlice({
@@ -10,10 +12,19 @@ export const movieSlice = createSlice({
   initialState,
   reducers: {
     getAllMovies: (state, action) => {
-      state.movies = [...action.payload];
+      console.log(action);
+      if (state.pageNumbers.includes(action.payload.pageNumber)) {
+        // state.movies = [...state.movies];
+      } else {
+        state.pageNumbers = [...state.pageNumbers, action.payload.pageNumber];
+        state.movies = [...state.movies, ...action.payload.response];
+      }
     },
     getMovieDetails: (state, action) => {
       state.movieDetails = action.payload;
+    },
+    searchMovies: (state, action) => {
+      state.searchMov = action.payload;
     },
     clearMovieDetails: (state) => {
       state.movieDetails = {};
@@ -21,6 +32,11 @@ export const movieSlice = createSlice({
   },
 });
 
-export const { getAllMovies, getMovieDetails,clearMovieDetails } = movieSlice.actions;
+export const {
+  getAllMovies,
+  getMovieDetails,
+  clearMovieDetails,
+  searchMovies,
+} = movieSlice.actions;
 
 export default movieSlice.reducer;
