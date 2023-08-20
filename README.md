@@ -34,6 +34,7 @@ Given an additional 4 hours, I would focus on the following improvements:
 3. **Unit Testing:** Write unit tests using tools like `Jest` and `React Testing Library` to ensure code correctness and maintainable test coverage.
 4. **Pagination for Search:** If the API supports it, implement pagination for fetching and displaying a larger number of movies, improving app performance and user experience.
 5. **Caching and Persistence:** Integrate `localforage` or a similar library for caching API responses and persisting user preferences, enhancing app performance and reducing redundant API calls.
+6. **Converting it into PWA**: I would focus on converting the Movie Database App into a Progressive Web App (PWA) to enhance its accessibility and user experience across various devices.
 
 ## Feedback
 The challenge was well-structured and effectively assessed proficiency in React, state management, API integration, and styling. Providing more detailed instructions for setting up environment variables and API keys would further improve the challenge experience.
